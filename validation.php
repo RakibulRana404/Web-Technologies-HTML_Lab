@@ -2,28 +2,22 @@
 $nameErr = $ageErr = $emailErr = $typeErr = $deptErr = $phoneErr = "";
 if(isset($_POST['submit']))
 {
-   // Name
    if(empty($_POST['name']))
        $nameErr = "Name is required";
    else if(!preg_match("/^[a-zA-Z ]+$/", $_POST['name']))
        $nameErr = "Only letters and spaces are allowed";
-   // Age
    if(empty($_POST['age']))
        $ageErr = "Age is required";
    else if($_POST['age'] < 18 || $_POST['age'] > 30)
        $ageErr = "Age must be between 18 and 30";
-   // Email
    if(empty($_POST['email']))
        $emailErr = "Email is required";
    else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
        $emailErr = "Invalid email format";
-   // Membership Type
    if(!isset($_POST['type']))
        $typeErr = "Please select a membership type";
-   // Department
    if($_POST['department'] == "")
        $deptErr = "Please select your department";
-   // Phone
    if(empty($_POST['phone']))
        $phoneErr = "Phone number is required";
    else if(!preg_match("/^[0-9]{11}$/", $_POST['phone']))
